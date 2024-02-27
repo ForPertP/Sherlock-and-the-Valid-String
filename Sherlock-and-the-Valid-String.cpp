@@ -1,4 +1,19 @@
-string isValid(string s)
+#include <bits/stdc++.h>
+
+using namespace std;
+
+/*
+ * Complete the 'isValid' function below.
+ *
+ * The function is expected to return a STRING.
+ * The function accepts STRING s as parameter.
+ */
+
+string isValid(string s) {
+
+}
+
+string isValid2(string s)
 {
     if (s.size() == 1)
         return "YES";
