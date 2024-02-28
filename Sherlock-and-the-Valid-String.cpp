@@ -13,7 +13,7 @@ string isValid(string s) {
 
 }
 
-string isValid2(string s)
+string isValid(string s)
 {
     if (s.size() == 1)
         return "YES";
@@ -88,3 +88,18 @@ string isValid2(string s)
     return "YES";
 }
 
+int main()
+{
+    ofstream fout(getenv("OUTPUT_PATH"));
+
+    string s;
+    getline(cin, s);
+
+    string result = isValid(s);
+
+    fout << result << "\n";
+
+    fout.close();
+
+    return 0;
+}
