@@ -26,6 +26,8 @@ string isValid(string s)
     {
         firstNonzero++;
     }
+    
+    if (firstNonzero == 26) return "NO";
 
     int minCount = charCounts[firstNonzero];
     int maxCount = charCounts[25];
