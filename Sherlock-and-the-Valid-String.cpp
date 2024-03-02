@@ -27,12 +27,13 @@ string isValid(string s)
         firstNonzero++;
     }
     
-    if (firstNonzero == 26) return "NO";
+    if (firstNonzero >= 25) return "NO";
 
     int minCount = charCounts[firstNonzero];
     int maxCount = charCounts[25];
 
     if (minCount == maxCount) return "YES";
+
     if ((maxCount - minCount == 1 && maxCount > charCounts[24]) ||
         (minCount == 1 && charCounts[firstNonzero + 1] == maxCount))
         return "YES";
