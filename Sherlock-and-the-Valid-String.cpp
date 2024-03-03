@@ -11,7 +11,34 @@ using namespace std;
 
 string isValid_ByMap(string s)
 {
-    return s;
+    if (s.size() == 1) return "YES";
+
+    map<char, int> charCounts;
+    for (const auto& c : s) {
+        charCounts[c]++;
+    }
+
+    int minCount = INT_MAX;
+    int maxCount = INT_MIN;
+    for (const auto& entry : charCounts) {
+        minCount = min(minCount, entry.second);
+        maxCount = max(maxCount, entry.second);
+    }
+
+    if (minCount == maxCount) return "YES";
+
+    int minCountFreq = 0;
+    int maxCountFreq = 0;
+    for (const auto& entry : charCounts) {
+        if (entry.second == minCount) minCountFreq++;
+        if (entry.second == maxCount) maxCountFreq++;
+    }
+
+    if ((maxCount - minCount == 1 && maxCountFreq == 1) ||
+        (minCount == 1 && minCountFreq == 1 && maxCountFreq == charCounts.size() - 1))
+        return "YES";
+
+    return "NO";
 }
 
 
