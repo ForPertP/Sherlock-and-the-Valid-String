@@ -9,7 +9,13 @@ using namespace std;
  * The function accepts STRING s as parameter.
  */
 
-string isValid(string s)
+string isValid_ByMap(string s)
+{
+    return s;
+}
+
+
+string isValid_ByVector(string s)
 {
     if (s.size() == 1) return "YES";
 
@@ -40,6 +46,20 @@ string isValid(string s)
 
     return "NO";
 }
+
+
+string isValid(string s)
+{
+    if( s.size() > 100)
+    {
+        return isValid_ByMap(s);
+    }
+    else
+    {
+        return isValid_ByVector(s);
+    }
+}
+
 
 int main()
 {
