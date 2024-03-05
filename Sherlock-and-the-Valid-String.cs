@@ -12,6 +12,37 @@ using System.Text.RegularExpressions;
 using System.Text;
 using System;
 
+class Result
+{
+
+    /*
+     * Complete the 'isValid' function below.
+     *
+     * The function is expected to return a STRING.
+     * The function accepts STRING s as parameter.
+     */
+
+    private static string IsValid_ByMap(string s)
+    {
+    }
+
+    private static string IsValid_ByVector(string s)
+    {
+    }
+
+    public static string isValid(string s)
+    {
+        if (s.Length > 100)
+        {
+            return IsValid_ByMap(s);
+        }
+        else
+        {
+            return IsValid_ByVector(s);
+        }
+    }
+}
+
 class Solution
 {
     public static void Main(string[] args)
