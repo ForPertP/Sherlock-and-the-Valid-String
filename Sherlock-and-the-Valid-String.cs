@@ -62,6 +62,34 @@ class Result
 
     private static string IsValid_ByVector(string s)
     {
+        if (s.Length == 1) return "YES";
+
+        int[] charCounts = new int[26];
+        foreach (char c in s)
+        {
+            charCounts[c - 'a']++;
+        }
+
+        Array.Sort(charCounts);
+
+        int firstNonzero = 0;
+        while (firstNonzero < 26 && charCounts[firstNonzero] == 0)
+        {
+            firstNonzero++;
+        }
+
+        if (firstNonzero >= 25) return "NO";
+
+        int minCount = charCounts[firstNonzero];
+        int maxCount = charCounts[25];
+
+        if (minCount == maxCount) return "YES";
+
+        if ((maxCount - minCount == 1 && maxCount > charCounts[24]) ||
+            (minCount == 1 && charCounts[firstNonzero + 1] == maxCount))
+            return "YES";
+
+        return "NO";
     }
 
     public static string isValid(string s)
