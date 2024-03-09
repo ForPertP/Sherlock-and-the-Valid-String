@@ -19,7 +19,20 @@ class Result {
      * The function accepts STRING s as parameter.
      */
 
+    private static String isValidByMap(String s) {
+        return "NO";
+    }
+
+    private static String isValidByVector(String s) {
+        return "NO";
+    }
+
     public static String isValid(String s) {
+        if (s.length() > 100) {
+            return isValidByMap(s);
+        } else {
+            return isValidByVector(s);
+        }
     }
 }
 
