@@ -20,10 +20,38 @@ class Result {
      */
 
     private static String isValidByMap(String s) {
+        if (s.length() == 1) return "YES";
+
+        Map<Character, Integer> charCounts = new HashMap<>();
+        for (char c : s.toCharArray()) {
+            charCounts.put(c, charCounts.getOrDefault(c, 0) + 1);
+        }
+
+        int minCount = Integer.MAX_VALUE;
+        int maxCount = Integer.MIN_VALUE;
+        for (int count : charCounts.values()) {
+            minCount = Math.min(minCount, count);
+            maxCount = Math.max(maxCount, count);
+        }
+
+        if (minCount == maxCount) return "YES";
+
+        int minCountFreq = 0;
+        int maxCountFreq = 0;
+        for (int count : charCounts.values()) {
+            if (count == minCount) minCountFreq++;
+            if (count == maxCount) maxCountFreq++;
+        }
+
+        if ((maxCount - minCount == 1 && maxCountFreq == 1) ||
+                (minCount == 1 && minCountFreq == 1 && maxCountFreq == charCounts.size() - 1))
+            return "YES";
+
         return "NO";
     }
 
     private static String isValidByVector(String s) {
+
         return "NO";
     }
 
