@@ -65,7 +65,7 @@ class Result {
             firstNonzero++;
         }
 
-        if (firstNonzero >= 25) return "NO";
+        if (firstNonzero > 26) return "NO";
 
         int minCount = charCounts[firstNonzero];
         int maxCount = charCounts[25];
