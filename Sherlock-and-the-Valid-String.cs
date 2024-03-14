@@ -60,11 +60,14 @@ class Result
         return "NO";
     }
 
+
+    private const int AlphabetLength = (int)('z' - 'a' + 1);
+    
     private static string IsValid_ByVector(string s)
     {
         if (s.Length == 1) return "YES";
 
-        int[] charCounts = new int[26];
+        int[] charCounts = new int[AlphabetLength];
         foreach (char c in s)
         {
             charCounts[c - 'a']++;
@@ -73,19 +76,19 @@ class Result
         Array.Sort(charCounts);
 
         int firstNonzero = 0;
-        while (firstNonzero < 26 && charCounts[firstNonzero] == 0)
+        while (firstNonzero < AlphabetLength && charCounts[firstNonzero] == 0)
         {
             firstNonzero++;
         }
 
-        if (firstNonzero >= 25) return "NO";
+        if (firstNonzero >= AlphabetLength) return "NO";
 
         int minCount = charCounts[firstNonzero];
-        int maxCount = charCounts[25];
+        int maxCount = charCounts[AlphabetLength - 1];
 
         if (minCount == maxCount) return "YES";
 
-        if ((maxCount - minCount == 1 && maxCount > charCounts[24]) ||
+        if ((maxCount - minCount == 1 && maxCount > charCounts[AlphabetLength - 2]) ||
             (minCount == 1 && charCounts[firstNonzero + 1] == maxCount))
             return "YES";
 
