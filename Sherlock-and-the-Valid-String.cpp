@@ -13,7 +13,7 @@ string isValid_ByMap(string s)
 {
     if (s.size() == 1) return "YES";
 
-    map<char, int> charCounts;
+    unordered_map<char, int> charCounts;
     for (const auto& c : s) {
         charCounts[c]++;
     }
@@ -42,11 +42,13 @@ string isValid_ByMap(string s)
 }
 
 
+const int AlphabetLength = 'z' - 'a' + 1;
+
 string isValid_ByVector(string s)
 {
     if (s.size() == 1) return "YES";
 
-    vector<int> charCounts(26);
+    vector<int> charCounts(AlphabetLength);
     for (char c : s)
     {
         charCounts[c - 'a']++;
@@ -55,19 +57,19 @@ string isValid_ByVector(string s)
     sort(charCounts.begin(), charCounts.end());
 
     int firstNonzero = 0;
-    while (firstNonzero < 26 && charCounts[firstNonzero] == 0)
+    while (firstNonzero < AlphabetLength && charCounts[firstNonzero] == 0)
     {
         firstNonzero++;
     }
     
-    if (firstNonzero >= 25) return "NO";
+    if (firstNonzero >= AlphabetLength) return "NO";
 
     int minCount = charCounts[firstNonzero];
-    int maxCount = charCounts[25];
+    int maxCount = charCounts[AlphabetLength - 1];
 
     if (minCount == maxCount) return "YES";
 
-    if ((maxCount - minCount == 1 && maxCount > charCounts[24]) ||
+    if ((maxCount - minCount == 1 && maxCount > charCounts[AlphabetLength - 2]) ||
         (minCount == 1 && charCounts[firstNonzero + 1] == maxCount))
         return "YES";
 
