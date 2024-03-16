@@ -49,11 +49,14 @@ class Result {
 
         return "NO";
     }
+    
+    
+    private static final int AlphabetLength = 'z' - 'a' + 1;
 
     private static String isValidByVector(String s) {
         if (s.length() == 1) return "YES";
 
-        int[] charCounts = new int[26];
+        int[] charCounts = new int[AlphabetLength];
         for (char c : s.toCharArray()) {
             charCounts[c - 'a']++;
         }
@@ -61,18 +64,18 @@ class Result {
         Arrays.sort(charCounts);
 
         int firstNonzero = 0;
-        while (firstNonzero < 26 && charCounts[firstNonzero] == 0) {
+        while (firstNonzero < AlphabetLength && charCounts[firstNonzero] == 0) {
             firstNonzero++;
         }
 
-        if (firstNonzero >= 26) return "NO";
+        if (firstNonzero >= AlphabetLength) return "NO";
 
         int minCount = charCounts[firstNonzero];
-        int maxCount = charCounts[25];
+        int maxCount = charCounts[AlphabetLength - 1];
 
         if (minCount == maxCount) return "YES";
 
-        if ((maxCount - minCount == 1 && maxCount > charCounts[24]) ||
+        if ((maxCount - minCount == 1 && maxCount > charCounts[AlphabetLength - 2]) ||
                 (minCount == 1 && charCounts[firstNonzero + 1] == maxCount))
             return "YES";
 
